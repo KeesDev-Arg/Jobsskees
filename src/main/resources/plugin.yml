@@ -1,0 +1,21 @@
+name: JobsSkees
+version: 0.1.0
+main: com.huerfanitos.jobsskees.JobsSkeesPlugin
+api-version: '1.21'
+description: Arbol de talentos por trabajo, vinculado a los niveles de Jobs.
+depend: [PlaceholderAPI]
+softdepend: [Jobs, LuckPerms]
+
+commands:
+  oficios:
+    description: Abre el arbol de talentos de los oficios.
+    usage: /oficios [reload | info [jugador] | reset <jugador>]
+    aliases: [talentos, jobsskees]
+
+permissions:
+  jobsskees.use:
+    description: Permite abrir el menu de oficios.
+    default: true
+  jobsskees.admin:
+    description: Permite usar los subcomandos de administracion.
+    default: op

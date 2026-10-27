@@ -1,0 +1,499 @@
+# Arbol de talentos: MINERO (Miner)
+# Cada nivel del trabajo en Jobs da 1 punto (ver points-per-level en config.yml).
+# Este arbol cuesta 200 puntos en total: se completa al nivel 200.
+
+job: Miner                       # nombre del trabajo en Jobs (se usa en el placeholder de nivel)
+display: "&bMinero"
+icon: DIAMOND_PICKAXE
+description:
+  - "&7Mejoras pequenas para el minero."
+  - "&7Se suman con tu pico, no lo reemplazan."
+
+# Grupos de bloques reutilizables en los efectos con la sintaxis @nombre
+groups:
+  ores:
+    - COAL_ORE
+    - DEEPSLATE_COAL_ORE
+    - COPPER_ORE
+    - DEEPSLATE_COPPER_ORE
+    - IRON_ORE
+    - DEEPSLATE_IRON_ORE
+    - GOLD_ORE
+    - DEEPSLATE_GOLD_ORE
+    - NETHER_GOLD_ORE
+    - REDSTONE_ORE
+    - DEEPSLATE_REDSTONE_ORE
+    - LAPIS_ORE
+    - DEEPSLATE_LAPIS_ORE
+    - DIAMOND_ORE
+    - DEEPSLATE_DIAMOND_ORE
+    - EMERALD_ORE
+    - DEEPSLATE_EMERALD_ORE
+    - NETHER_QUARTZ_ORE
+
+# Tipos de efecto: drop_bonus | durability_save | attribute | commands
+# row: fila 0-4 | col: columna 0-8 | cost: puntos | requires: ids de nodos previos
+nodes:
+  veta_1:
+    name: "&bVeta I"
+    icon: COAL_ORE
+    row: 0
+    col: 0
+    cost: 4
+    description:
+      - "&7+0.05 de Fortuna al picar menas (total: +0.05)."
+      - "&7Se suma a la Fortuna de tu pico."
+      - "&7No actua con Toque de seda."
+    effects:
+      - type: drop_bonus
+        chance: 0.05
+        blocks: ["@ores"]
+  veta_2:
+    name: "&bVeta II"
+    icon: COPPER_ORE
+    row: 0
+    col: 1
+    cost: 6
+    requires: [veta_1]
+    description:
+      - "&7+0.05 de Fortuna al picar menas (total: +0.10)."
+      - "&7Se suma a la Fortuna de tu pico."
+      - "&7No actua con Toque de seda."
+    effects:
+      - type: drop_bonus
+        chance: 0.05
+        blocks: ["@ores"]
+  veta_3:
+    name: "&bVeta III"
+    icon: IRON_ORE
+    row: 0
+    col: 2
+    cost: 8
+    requires: [veta_2]
+    description:
+      - "&7+0.05 de Fortuna al picar menas (total: +0.15)."
+      - "&7Se suma a la Fortuna de tu pico."
+      - "&7No actua con Toque de seda."
+    effects:
+      - type: drop_bonus
+        chance: 0.05
+        blocks: ["@ores"]
+  veta_4:
+    name: "&bVeta IV"
+    icon: GOLD_ORE
+    row: 0
+    col: 3
+    cost: 10
+    requires: [veta_3]
+    description:
+      - "&7+0.05 de Fortuna al picar menas (total: +0.20)."
+      - "&7Se suma a la Fortuna de tu pico."
+      - "&7No actua con Toque de seda."
+    effects:
+      - type: drop_bonus
+        chance: 0.05
+        blocks: ["@ores"]
+  veta_5:
+    name: "&bVeta V"
+    icon: LAPIS_ORE
+    row: 0
+    col: 4
+    cost: 12
+    requires: [veta_4]
+    description:
+      - "&7+0.05 de Fortuna al picar menas (total: +0.25)."
+      - "&7Se suma a la Fortuna de tu pico."
+      - "&7No actua con Toque de seda."
+    effects:
+      - type: drop_bonus
+        chance: 0.05
+        blocks: ["@ores"]
+  veta_6:
+    name: "&bVeta VI"
+    icon: DIAMOND_ORE
+    row: 0
+    col: 5
+    cost: 14
+    requires: [veta_5]
+    description:
+      - "&7+0.05 de Fortuna al picar menas (total: +0.30)."
+      - "&7Se suma a la Fortuna de tu pico."
+      - "&7No actua con Toque de seda."
+    effects:
+      - type: drop_bonus
+        chance: 0.05
+        blocks: ["@ores"]
+  caidas_1:
+    name: "&fCaida suave I"
+    icon: FEATHER
+    row: 0
+    col: 6
+    cost: 3
+    description:
+      - "&7+1 bloque de caida segura (total: +1)."
+    effects:
+      - type: attribute
+        attribute: minecraft:safe_fall_distance
+        amount: 1.0
+        operation: add_number
+  caidas_2:
+    name: "&fCaida suave II"
+    icon: FEATHER
+    row: 0
+    col: 7
+    cost: 4
+    requires: [caidas_1]
+    description:
+      - "&7+1 bloque de caida segura (total: +2)."
+    effects:
+      - type: attribute
+        attribute: minecraft:safe_fall_distance
+        amount: 1.0
+        operation: add_number
+  caidas_3:
+    name: "&fCaida suave III"
+    icon: FEATHER
+    row: 0
+    col: 8
+    cost: 5
+    requires: [caidas_2]
+    description:
+      - "&7+1 bloque de caida segura (total: +3)."
+    effects:
+      - type: attribute
+        attribute: minecraft:safe_fall_distance
+        amount: 1.0
+        operation: add_number
+  rapidez_1:
+    name: "&eRapidez 1"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 0
+    cost: 2
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +2%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_2:
+    name: "&eRapidez 2"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 1
+    cost: 3
+    requires: [rapidez_1]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +4%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_3:
+    name: "&eRapidez 3"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 2
+    cost: 3
+    requires: [rapidez_2]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +6%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_4:
+    name: "&eRapidez 4"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 3
+    cost: 4
+    requires: [rapidez_3]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +8%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_5:
+    name: "&eRapidez 5"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 4
+    cost: 4
+    requires: [rapidez_4]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +10%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_6:
+    name: "&eRapidez 6"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 5
+    cost: 5
+    requires: [rapidez_5]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +12%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_7:
+    name: "&eRapidez 7"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 6
+    cost: 5
+    requires: [rapidez_6]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +14%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_8:
+    name: "&eRapidez 8"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 7
+    cost: 6
+    requires: [rapidez_7]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +16%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  rapidez_9:
+    name: "&eRapidez 9"
+    icon: IRON_PICKAXE
+    row: 1
+    col: 8
+    cost: 6
+    requires: [rapidez_8]
+    description:
+      - "&7+2% de velocidad al romper bloques (total: +18%)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_break_speed
+        amount: 0.02
+        operation: add_scalar
+  resistencia_1:
+    name: "&aResistencia 1"
+    icon: ANVIL
+    row: 2
+    col: 0
+    cost: 3
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +2%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_2:
+    name: "&aResistencia 2"
+    icon: ANVIL
+    row: 2
+    col: 1
+    cost: 3
+    requires: [resistencia_1]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +4%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_3:
+    name: "&aResistencia 3"
+    icon: ANVIL
+    row: 2
+    col: 2
+    cost: 4
+    requires: [resistencia_2]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +6%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_4:
+    name: "&aResistencia 4"
+    icon: ANVIL
+    row: 2
+    col: 3
+    cost: 4
+    requires: [resistencia_3]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +8%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_5:
+    name: "&aResistencia 5"
+    icon: ANVIL
+    row: 2
+    col: 4
+    cost: 5
+    requires: [resistencia_4]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +10%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_6:
+    name: "&aResistencia 6"
+    icon: ANVIL
+    row: 2
+    col: 5
+    cost: 5
+    requires: [resistencia_5]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +12%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_7:
+    name: "&aResistencia 7"
+    icon: ANVIL
+    row: 2
+    col: 6
+    cost: 6
+    requires: [resistencia_6]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +14%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  resistencia_8:
+    name: "&aResistencia 8"
+    icon: ANVIL
+    row: 2
+    col: 7
+    cost: 6
+    requires: [resistencia_7]
+    description:
+      - "&7+2% de no gastar durabilidad del pico (total: +16%)."
+    effects:
+      - type: durability_save
+        chance: 0.02
+        items: ["_PICKAXE"]
+  alcance_1:
+    name: "&dAlcance 1"
+    icon: STICK
+    row: 3
+    col: 0
+    cost: 3
+    description:
+      - "&7+0.1 bloques de alcance al romper y colocar (total: +0.1)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_interaction_range
+        amount: 0.1
+        operation: add_number
+  alcance_2:
+    name: "&dAlcance 2"
+    icon: STICK
+    row: 3
+    col: 1
+    cost: 4
+    requires: [alcance_1]
+    description:
+      - "&7+0.1 bloques de alcance al romper y colocar (total: +0.2)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_interaction_range
+        amount: 0.1
+        operation: add_number
+  alcance_3:
+    name: "&dAlcance 3"
+    icon: STICK
+    row: 3
+    col: 2
+    cost: 5
+    requires: [alcance_2]
+    description:
+      - "&7+0.1 bloques de alcance al romper y colocar (total: +0.3)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_interaction_range
+        amount: 0.1
+        operation: add_number
+  alcance_4:
+    name: "&dAlcance 4"
+    icon: STICK
+    row: 3
+    col: 3
+    cost: 6
+    requires: [alcance_3]
+    description:
+      - "&7+0.1 bloques de alcance al romper y colocar (total: +0.4)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_interaction_range
+        amount: 0.1
+        operation: add_number
+  alcance_5:
+    name: "&dAlcance 5"
+    icon: STICK
+    row: 3
+    col: 4
+    cost: 8
+    requires: [alcance_4]
+    description:
+      - "&7+0.1 bloques de alcance al romper y colocar (total: +0.5)."
+    effects:
+      - type: attribute
+        attribute: minecraft:block_interaction_range
+        amount: 0.1
+        operation: add_number
+  mesa:
+    name: "&6Mesa portatil"
+    icon: CRAFTING_TABLE
+    row: 3
+    col: 6
+    cost: 8
+    description:
+      - "&7Habilita el comando /workbench."
+    effects:
+      - type: commands
+        apply: ["lp user {uuid} permission set essentials.workbench true"]
+        remove: ["lp user {uuid} permission unset essentials.workbench"]
+  cofre:
+    name: "&5Cofre del minero"
+    icon: ENDER_CHEST
+    row: 3
+    col: 7
+    cost: 14
+    description:
+      - "&7Habilita el comando /enderchest."
+    effects:
+      - type: commands
+        apply: ["lp user {uuid} permission set essentials.enderchest true"]
+        remove: ["lp user {uuid} permission unset essentials.enderchest"]
+  yunque:
+    name: "&cYunque portatil"
+    icon: ANVIL
+    row: 3
+    col: 8
+    cost: 12
+    description:
+      - "&7Habilita el comando /anvil."
+    effects:
+      - type: commands
+        apply: ["lp user {uuid} permission set essentials.anvil true"]
+        remove: ["lp user {uuid} permission unset essentials.anvil"]

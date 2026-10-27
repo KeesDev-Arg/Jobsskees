@@ -1,0 +1,24 @@
+# ============================================================
+#  JobsSkees - configuracion general
+# ============================================================
+
+# Si es false, el plugin quita TODOS los efectos a los jugadores (atributos y permisos)
+# sin borrar sus datos. Util para desactivarlo de forma limpia antes de quitar el .jar.
+enabled: true
+
+# Cuantos puntos de talento da cada nivel de un trabajo.
+points-per-level: 1
+
+# Placeholder que devuelve el nivel de un trabajo. {job} se reemplaza por el campo "job" de cada arbol.
+# Segun la documentacion oficial de Jobs: %jobsr_user_jlevel_<trabajo>%
+# Probalo con:  papi parse <jugador> %jobsr_user_jlevel_Miner%
+level-placeholder: "%jobsr_user_jlevel_{job}%"
+
+# Cada cuantos segundos se recalculan los niveles y los efectos de los jugadores conectados.
+check-interval-seconds: 30
+
+# Espera (en horas) entre dos reinicios del arbol de un mismo trabajo.
+reset-cooldown-hours: 24
+
+# Mensaje de prefijo del plugin.
+prefix: "&8[&bJobsSkees&8] &7"
